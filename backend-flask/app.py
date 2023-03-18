@@ -38,9 +38,11 @@ tracer = trace.get_tracer(__name__)
 # X-RAY ------
 xray_url = os.getenv("AWS_XRAY_URL")
 xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
-XRayMiddleware(app, xray_recorder)
+
 
 app = Flask(__name__)
+
+XRayMiddleware(app, xray_recorder)
 
 # Initialize tracing and an exporter that can send data to Honeycomb
 FlaskInstrumentor().instrument_app(app)
