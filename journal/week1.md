@@ -12,7 +12,7 @@ Overall, Docker has become a popular tool among developers and DevOps teams beca
 
 ###
 
-#### Set Up nootifications for the Cruddur App and added a sample notification
+#### Set Up notifications for the Cruddur App and added a sample notification
 ![Notifications](assets/Notifications.png)
 
 ### Containerized both the backend and frontend images 
