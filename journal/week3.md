@@ -2,7 +2,15 @@
 
 ## COGNITO
 
-Install AWS Amplify in frontend folder, with the following command
+AWS Cognito is a user authentication and authorization service provided by Amazon Web Services (AWS). It allows developers to add user sign-up, sign-in, and access control to their web and mobile applications quickly and easily.
+
+Cognito offers features such as user registration and login, social identity providers (such as Facebook and Google), multi-factor authentication, and user data synchronization across devices. Additionally, it supports both JSON Web Tokens (JWTs) and OAuth 2.0 access tokens for secure access to APIs and resources.
+
+Cognito can also be integrated with other AWS services such as AWS Lambda, Amazon API Gateway, and Amazon S3 to create fully managed serverless applications. It provides a scalable and secure solution for managing user authentication and authorization in modern applications.
+
+## Steps to set up
+
+Install AWS Amplify in frontend folder, 
 
 ```
 npm i aws-amplify --save
@@ -39,7 +47,7 @@ Go into your Frontend-react-js >> src >> App.js
 
 Paste at the end of the import codes the following
 
-```
+```.js
 import { Amplify } from 'aws-amplify';
 
 ```
