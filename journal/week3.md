@@ -40,7 +40,9 @@ npm i aws-amplify --save
 - app type select public client
 - app client name - cruddur
 - review and create user pool
-![Added MFA to root and User Account](assets/MFA.png)
+
+
+
 ### CONFIGURE AMPLIFY
 
 configure Frontend-react-js >> src >> App.js
@@ -70,11 +72,24 @@ After successfull set up, delete the user in the console and now try to register
 - enter new username
 - enter email address
 - set a password according to policies
+- 
+
+
+![Password Reset](assets/resetpassword.png)
+
+![Successfull ](assets/successfull.png)
+
+![Email Verification](assets/verification.png)
+
+### Cognito User registered using signup page
+
+![Cognito User](assets/cognitouser.png)
 
 ### Congito JWT Server side Verify
 
+![JWT Implementation](assets/jwtImplementation.png)
 
 
 ### UI Changes 
  
- 
+![UI Changes](assets/uichanges.png)
