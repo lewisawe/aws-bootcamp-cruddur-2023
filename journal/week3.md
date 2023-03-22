@@ -40,29 +40,19 @@ npm i aws-amplify --save
 - app type select public client
 - app client name - cruddur
 - review and create user pool
-
+![Added MFA to root and User Account](assets/MFA.png)
 ### CONFIGURE AMPLIFY
 
-Go into your Frontend-react-js >> src >> App.js
-
-
+configure Frontend-react-js >> src >> App.js
 
 In the docker-compose.yml file add the code at the frontend-react-js enviroment variables
 -user pool and client ID are found in the AWS Conginto Console
 
 ### Conditionally show components based on logged in or logged out
 
-Navigate to the frontend-react-js >> src >> pages >> HomeFeedPage.js
-
-
-Navigate to the frontend-react-js >> src >> components >> ProfielInfo.js
-
-Navigate to the frontend-react-js >> src >> pages >> SigninPage.js
-
-replace line 7 with - the line with cookies
-
-
-at line 15 - 26 for the onSubmit function
+-configure frontend-react-js 'HomeFeedPage.js'
+-configure frontend-react-js ProfielInfo.js
+-configure frontend-react-js SigninPage.js
 
 
 ### return to AWS Cognito console
@@ -72,12 +62,18 @@ at line 15 - 26 for the onSubmit function
 - enter email address
 - set a password according to policies
 
+After successfull set up, delete the user in the console and now try to register a new user in the website
 
+### return to AWS Cognito console
 
+- Create a new user
+- enter new username
+- enter email address
+- set a password according to policies
 
 ### Congito JWT Server side Verify
 
-Add to frontend-react >> src >> pages >> homefeedpage.js line 27 after const res = await and before method 'get'
+
 
 ### UI Changes 
  
