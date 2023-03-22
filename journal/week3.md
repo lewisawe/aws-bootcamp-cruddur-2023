@@ -72,14 +72,13 @@ After successfull set up, delete the user in the console and now try to register
 - enter new username
 - enter email address
 - set a password according to policies
-- 
 
+
+![Email Verification](assets/verification.png)
 
 ![Password Reset](assets/resetpassword.png)
 
 ![Successfull ](assets/successfull.png)
-
-![Email Verification](assets/verification.png)
 
 ### Cognito User registered using signup page
 
@@ -88,7 +87,6 @@ After successfull set up, delete the user in the console and now try to register
 ### Congito JWT Server side Verify
 
 ![JWT Implementation](assets/jwtImplementation.png)
-
 
 ### UI Changes 
  
