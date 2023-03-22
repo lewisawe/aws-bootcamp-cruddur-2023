@@ -2,6 +2,14 @@
 
 ## Docker Containerization
 
+Docker is a containerization platform that allows developers to easily create, deploy, and run applications in containers. Containers are lightweight, portable, and self-contained environments that include everything an application needs to run, such as code, libraries, and system tools.
+
+Docker provides a simple and efficient way to package an application into a container image that can be deployed on any platform or cloud infrastructure that supports Docker. This means that developers can build, test, and deploy their applications consistently across different environments, without having to worry about the underlying infrastructure.
+
+Docker also provides a range of tools and services that make it easy to manage containers, such as Docker Compose for orchestrating multi-container applications, Docker Swarm for managing clusters of Docker hosts, and Docker Hub for sharing and discovering container images.
+
+Overall, Docker has become a popular tool among developers and DevOps teams because of its ability to simplify the process of building, testing, and deploying applications, while also providing a consistent and reliable runtime environment.
+
 ###
 
 #### Set Up nootifications for the Cruddur App and added a sample notification
