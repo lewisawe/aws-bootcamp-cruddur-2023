@@ -184,3 +184,127 @@ execute
 ./bin/db-schema-load
 ```
 
+add color scheme to 'db-schema-load'
+
+```
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-schema-load"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+```
+
+execute the schema
+```
+./bin/db-schema-load
+```
+
+in the db folder schema.sql file
+
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+
+
+CREATE TABLE public.users (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  display_name text NOT NULL,
+  handle text NOT NULL,
+  email text NOT NULL,
+  cognito_user_id text NOT NULL,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+
+CREATE TABLE public.activities (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_uuid UUID NOT NULL,
+  message text NOT NULL,
+  replies_count integer DEFAULT 0,
+  reposts_count integer DEFAULT 0,
+  likes_count integer DEFAULT 0,
+  reply_to_activity_uuid integer,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+```
+
+execute db-schema-load
+
+```
+./bin/db-schema-load
+```
+
+create a new file in bin named db-connect
+add the following
+and chmod u+x ./bin/db-connect
+```
+#! /usr/bin/bash
+
+psql $CONNECTION_URL
+```
+
+execute db-connect and you should be able to see 2 tables
+
+```
+./bin/db-schema-connect
+\l
+\dt
+```
+
+create a new file in bin named db-seed 
+add the following
+and chmod u+x ./bin/db-seed
+```
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-seed"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+seed_path="$(realpath .)/db/seed.sql"
+echo $seed_path
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $seed_path
+```
+
+ensure the color scheme is in all the files make sure to change label 
+```
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-seed"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+```
+
+create a new file in db named seed.sql
+add the following
+
+```
+-- this file was manually created
+INSERT INTO public.users (display_name, handle, cognito_user_id)
+VALUES
+  ('Andrew Brown', 'andrewbrown' ,'MOCK'),
+  ('Andrew Bayko', 'bayko' ,'MOCK');
+
+INSERT INTO public.activities (user_uuid, message, expires_at)
+VALUES
+  (
+    (SELECT uuid from public.users WHERE users.handle = 'andrewbrown' LIMIT 1),
+    'This was imported as seed data!',
+    current_timestamp + interval '10 day'
+  )
+
+```
+
+execute
+```
+./bin/db-schema-load
+./bin/db-seed
+```
