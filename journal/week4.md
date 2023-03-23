@@ -35,4 +35,86 @@ Docker compose up
 
 Stop the RDS Instance in the console menu
 
+at terminal in the postgress tab
 
+```
+psql -Upostgress --host localhost
+password: password
+
+```
+ common commands
+ 
+```
+\l
+
+CREATE database cruddur;
+
+\l
+
+```
+
+Create a new folder in backend folder named 'db' inside the folder create a file name 'schema.sql'
+Add the following
+
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
+quit postgress
+
+```
+\q
+```
+
+in the backend directory of cruddur cli
+
+```
+psql cruddur < db/schema.sql -h localhost -U postgres
+```
+enter password
+
+To persist postgress password and username
+
+```
+export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+```
+Also try to connect with
+
+```
+psql $CONNECTION_URL
+```
+
+Prod Connection URL and from the console copy the RDS DB endpoint and insert
+
+```
+export PROD_CONNECTION_URL="postgresql://cruddurroot:huEE33z2Qvl383@endpoint:5432/cruddur"
+gp env PROD_CONNECTION_URL="postgresql://cruddurroot:huEE33z2Qvl383@endpoint:5432/cruddur"
+```
+
+Mkdir in backend a folder named bin and 3 new files
+- db-create
+- db-drop
+- db-schema-load
+
+in all the files add in the top line 
+
+```
+#! /usr/bin/bash
+```
+
+in 'db-drop'
+```
+psql $CONNECTION_URL -c "DROP database cruddur;"
+```
+
+change permissions of the files using
+```
+chmod u+x bin/db-create
+chmod u+x bin/db-drop
+chmod u+x bin/db-schema-load
+```
+
+run db-create
+
+./bin/db-drop
