@@ -126,7 +126,7 @@ edit 'db-drop'
 echo "db-drop"
 
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTON_URL")
-
+psql $NO_DB_CONNECTION_URL -c "drop database cruddur;"
 ```
  re-run in CLI
  
@@ -146,5 +146,41 @@ create a database
 
 ```
 ./bin/db-create
+```
+
+in 'db-schema-load
+
+```
+echo "db-schema-load"
+
+schema_path="$(realpath .)/db/schema.sql"
+echo $schema_path
+
+
+psql $CONNECTION_URL cruddur < $schema_path
+```
+execute
+
+```
+./bin/db-schema-load
+```
+
+edit 'db-schema-load'
+
+```
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $schema_path
+```
+
+execute
+```
+./bin/db-schema-load
 ```
 
