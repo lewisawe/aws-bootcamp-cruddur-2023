@@ -105,7 +105,7 @@ in all the files add in the top line
 
 in 'db-drop'
 ```
-psql $CONNECTION_URL -c "DROP database cruddur;"
+psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
 ```
 
 change permissions of the files using
@@ -116,5 +116,35 @@ chmod u+x bin/db-schema-load
 ```
 
 run db-create
-
+```
 ./bin/db-drop
+```
+
+edit 'db-drop'
+
+```
+echo "db-drop"
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTON_URL")
+
+```
+ re-run in CLI
+ 
+```
+./bin/db-drop
+```
+
+in 'db-create'
+
+```
+echo "db-create
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "create database cruddur;"
+```
+
+create a database
+
+```
+./bin/db-create
+```
+
