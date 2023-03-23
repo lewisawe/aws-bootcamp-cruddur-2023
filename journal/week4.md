@@ -15,9 +15,9 @@ aws rds create-db-instance \
   --engine postgres \
   --engine-version  14.6 \
   --master-username root \
-  --master-user-password huEE33z2Qvl383 \
+  --master-user-password \
   --allocated-storage 20 \
-  --availability-zone us-east-1a \
+  --availability-zone  \
   --backup-retention-period 0 \
   --port 5432 \
   --no-multi-az \
@@ -39,7 +39,6 @@ at terminal in the postgress tab
 
 ```
 psql -Upostgress --host localhost
-password: password
 
 ```
  common commands
@@ -76,8 +75,8 @@ enter password
 To persist postgress password and username
 
 ```
-export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
-gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+export CONNECTION_URL="postgresql://postgres:Pass@localhost:5432/cruddur"
+gp env CONNECTION_URL="postgresql://postgres:Pass@localhost:5432/cruddur"
 ```
 Also try to connect with
 
@@ -88,8 +87,8 @@ psql $CONNECTION_URL
 Prod Connection URL and from the console copy the RDS DB endpoint and insert
 
 ```
-export PROD_CONNECTION_URL="postgresql://cruddurroot:huEE33z2Qvl383@endpoint:5432/cruddur"
-gp env PROD_CONNECTION_URL="postgresql://cruddurroot:huEE33z2Qvl383@endpoint:5432/cruddur"
+export PROD_CONNECTION_URL="postgresql://cruddurroot:Pass@endpoint:5432/cruddur"
+gp env PROD_CONNECTION_URL="postgresql://cruddurroot:Pass@endpoint:5432/cruddur"
 ```
 
 Mkdir in backend a folder named bin and 3 new files
