@@ -319,17 +319,30 @@ execute
 ./bin/db-seed
 ```
 
+# List tables psql
 
 ![Photos](assets/psqlData.png)
 
-![Photos](assets/psqlTables.png)
-
-![Photos](assets/seed_data.png)
+### psql Working in the terminal
 
 ![Photos](assets/workingpsql.png)
 
+### psql activities entries
+
+![Photos](assets/psqlTables.png)
+
+### Seed Data Succesful in the Cruddur App
+
+![Photos](assets/seed_data.png)
+
+### Lambda CloudWatch Logs
+
 ![Photos](assets/lambdaCloudWatchLogs.png)
 
+### DataBase Prod Entry 
+
 ![Photos](assets/succesfulProdDBEntry.png)
+
+### Published Data in the Cruddur App
 
 ![Photos](assets/week-4-done.png)
