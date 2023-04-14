@@ -5,5 +5,5 @@ Amazon DynamoDB is a fully managed NoSQL database service provided by AWS. It is
 ## Implimentation of DynamoDB
 
 ![Photo](assets/ddb-scan.png)
-![Photo](assets/get-conversation.png)
-![Photo](assets/lis-conversation.png)
+![Photo](assets/get-conversations.png)
+![Photo](assets/lis-conversations.png)
