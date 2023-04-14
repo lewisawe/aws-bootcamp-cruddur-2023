@@ -51,4 +51,4 @@ for handle, sub in users.items():
   update_users_with_cognito_user_id(
     handle=handle,
     sub=sub
-  ) 
+  )

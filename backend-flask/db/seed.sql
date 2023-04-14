@@ -1,8 +1,9 @@
 -- this file was manually created
 INSERT INTO public.users (display_name, email, handle, cognito_user_id)
 VALUES
-  ('Lewis Sawe','lewisbet9@gmail.com','lewisawe','MOCK'),
-  ('Murenju','lewis.sawe@pm.me','murenju','MOCK');
+  ('Lewis Sawe','lewisbet9@gmail.com' , 'lewisawe' ,'MOCK'),
+  ('Lewis Sawe','lewis.sawe@pm.me' , 'murenju' ,'MOCK');
+  ('Londo Mollari','lmollari@centari.com' ,'londo' ,'MOCK');
 
 INSERT INTO public.activities (user_uuid, message, expires_at)
 VALUES
@@ -11,4 +12,3 @@ VALUES
     'This was imported as seed data!',
     current_timestamp + interval '10 day'
   )
-
