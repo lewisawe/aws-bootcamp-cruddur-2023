@@ -7,10 +7,10 @@ Amazon DynamoDB is a fully managed NoSQL database service provided by AWS. It is
 ### Creating Bash Scripts for DynamoDb
 
 Create the following bash script files
-*schema-load
-*list-tables
-*seed
-*drop
+- schema-load
+- list-tables
+- seed
+- drop
 
 #### schema-load
 
@@ -394,9 +394,9 @@ aws dynamodb delete-table $ENDPOINT_URL \
   
 ```
 
-Create a folder in the ddb script folders named patterns is contains
-*get-conversation
-*list-conversation
+### Create a folder in the ddb script folders named patterns is contains
+- get-conversation
+- list-conversation
 
 #### get-conversation
 
