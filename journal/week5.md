@@ -525,6 +525,12 @@ print(json.dumps(response, sort_keys=True, indent=2))
 ![Photo](assets/lis-conversations.png)
 
 
+![Photo](assets/messageConversations.png)
+![Photo](assets/homePageDynamoDB.png)
+![Photo](assets/postMessages.png)
+![Photo](assets/sendMessagesMurenju.png)
+![Photo](assets/dynamodbLambda.png)
+![Photo](assets/dyanamodbItems.png)
 
 
 
