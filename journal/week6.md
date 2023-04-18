@@ -13,7 +13,7 @@ AWS Fargate is a serverless compute engine for containers that allows developers
 
 ## IMPLEMENTATION
 
-create a script to test RDS Connection named test
+* create a script to test RDS Connection named test
 located bin/db/
 and chmod u+x 
 ```
@@ -37,7 +37,7 @@ finally:
   
 ```
 
-Add a healch check in the backend app.py
+* Add a healch check in the backend app.py
 
 ```
 @app.route('/api/health-check')
@@ -45,7 +45,7 @@ def health_check():
   return {'success': True}, 200
   
 ```
-Create a new folder
+* Create a new folder
 backend-flask/bin/flask
 a script named 'health-check'
 and chmod u+x 
@@ -70,3 +70,24 @@ except Exception as e:
   exit(1) # false
   
 ```
+
+* Create CloudWatch Logs in CLI with
+
+```
+aws logs create-log-group --log-group-name "/cruddur/fargate-cluster"
+aws logs put-retention-policy --log-group-name "/cruddur/fargate-cluster" --retention-in-days 1
+
+```
+
+## Creating ECS Cluster
+AWS CLI command to create a ECS cluster named cruddur
+```
+aws ecs create-cluster \
+--cluster-name cruddur \
+--service-connect-defaults namespace=cruddur
+
+```
+
+
+
+
