@@ -9,3 +9,64 @@ Amazon Elastic Container Service (ECS) is a fully-managed container orchestratio
 Amazon Elastic Kubernetes Service (EKS) is a fully-managed Kubernetes service that makes it easy to deploy, manage, and scale containerized applications using Kubernetes. EKS enables developers to focus on writing applications rather than managing the underlying infrastructure.
 
 AWS Fargate is a serverless compute engine for containers that allows developers to run containers without managing servers or clusters. With Fargate, developers can focus on building and deploying their applications without worrying about the underlying infrastructure.
+
+
+## IMPLEMENTATION
+
+create a script to test RDS Connection named test
+located bin/db/
+and chmod u+x 
+```
+#!/usr/bin/env python3
+
+import psycopg
+import os
+import sys
+
+connection_url = os.getenv("CONNECTION_URL")
+
+conn = None
+try:
+  print('attempting connection')
+  conn = psycopg.connect(connection_url)
+  print("Connection successful!")
+except psycopg.Error as e:
+  print("Unable to connect to the database:", e)
+finally:
+  conn.close()
+  
+```
+
+Add a healch check in the backend app.py
+
+```
+@app.route('/api/health-check')
+def health_check():
+  return {'success': True}, 200
+  
+```
+Create a new folder
+backend-flask/bin/flask
+a script named 'health-check'
+and chmod u+x 
+```
+#!/usr/bin/env python3
+
+import urllib.request
+
+try:
+  response = urllib.request.urlopen('http://localhost:4567/api/health-check')
+  if response.getcode() == 200:
+    print("[OK] Flask server is running")
+    exit(0) # success
+  else:
+    print("[BAD] Flask server is not running")
+    exit(1) # false
+# This for some reason is not capturing the error....
+#except ConnectionRefusedError as e:
+# so we'll just catch on all even though this is a bad practice
+except Exception as e:
+  print(e)
+  exit(1) # false
+  
+```
