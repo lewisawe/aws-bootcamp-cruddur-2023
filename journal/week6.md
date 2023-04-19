@@ -74,8 +74,8 @@ except Exception as e:
 * Create CloudWatch Logs in CLI with
 
 ```
-aws logs create-log-group --log-group-name "/cruddur/fargate-cluster"
-aws logs put-retention-policy --log-group-name "/cruddur/fargate-cluster" --retention-in-days 1
+aws logs create-log-group --log-group-name "cruddur"
+aws logs put-retention-policy --log-group-name "cruddur" --retention-in-days 1
 
 ```
 
@@ -112,19 +112,19 @@ echo $ECR_PYTHON_URL
 ### Docker pull
 
 ```
-### docker pull python:3.10-slim-buster
+docker pull python:3.10-slim-buster
 ```
 
 ### Tag Image
 
 ```
-### docker tag python:3.10-slim-buster $ECR_PYTHON_URL:3.10-slim-buster
+docker tag python:3.10-slim-buster $ECR_PYTHON_URL:3.10-slim-buster
 ```
 
 ### Push Image
 
 ```
-### docker push $ECR_PYTHON_URL:3.10-slim-buster
+docker push $ECR_PYTHON_URL:3.10-slim-buster
 ```
 
 ### Copy your URI from console and Add to the Dockerfile
@@ -136,5 +136,76 @@ FROM 387543059434.dkr.ecr.ca-central-1.amazonaws.com/cruddur-python:3.10-slim-bu
 The docker compose-up
 
 ```
-docker compose up db
+docker compose up backend-flask db
+```
+
+Create a repo for backend-flask
+
+```
+aws ecr create-repository \
+  --repository-name backend-flask \
+  --image-tag-mutability MUTABLE
+```
+### Set the URL
+
+```
+export ECR_BACKEND_FLASK_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend-flask"
+echo $ECR_BACKEND_FLASK_URL
+```
+
+### Build the image, ensure you are in the right directory
+
+```
+docker build -t backend-flask .
+```
+### Tag the image
+
+```
+docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
+```
+
+### Push Image
+
+```
+docker push $ECR_BACKEND_FLASK_URL:latest
+```
+Set up sensitive data to task definations
+
+```
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_ACCESS_KEY_ID" --value $AWS_ACCESS_KEY_ID
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_SECRET_ACCESS_KEY" --value $AWS_SECRET_ACCESS_KEY
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNECTION_URL" --value $PROD_CONNECTION_URL
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
+aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
+```
+
+
+### Create a IAM Role
+
+Create a file in aws/policies/service-execution-role
+```
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters",
+        "ssm:GetParameter"
+      ],
+      "Resource": "arn:aws:ssm:us-east-1:939741999521:parameter/cruddur/backend-flask/*"
+    }]
+  }
+```
+Create a file in aws/policies/service-assume-role-execution-policy.json
+
+Execute CLI to create role
+
+```
+aws iam create-role --role-name CruddurServiceExecutionRole --assume-role-policy-document file://aws/policies/service-assume-role-execution-policy.json
+```
+
+Execute CLI to put role
+
+```
+aws iam put-role-policy --policy-name CruddurServiceExecutionPolicy --role-name CruddurServiceExecutionRole --policy-document file://aws/policies/service-execution-policy.json
 ```
