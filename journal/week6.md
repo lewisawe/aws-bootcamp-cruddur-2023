@@ -253,3 +253,50 @@ aws ec2 authorize-security-group-ingress \
   --port 80 \
   --cidr 0.0.0.0/0
 ```
+
+Create a file in aws/json/service-backend.json to create a new service 
+
+```
+{
+    "cluster": "cruddur",
+    "launchType": "FARGATE",
+    "desiredCount": 1,
+    "enableECSManagedTags": true,
+    "enableExecuteCommand": true,
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "assignPublicIp": "ENABLED",
+        "securityGroups": [
+          "sg-08cb54773bf6adff8"
+        ],
+        "subnets": [
+            "subnet-0d9bca497abea1425",
+            "subnet-00a52828946aa7649",
+            "subnet-0a201aa360ea1d0a1"
+
+        ]
+      }
+    },
+    "propagateTags": "SERVICE",
+    "serviceName": "backend-flask",
+    "taskDefinition": "backend-flask"
+}
+```
+
+Run the json
+
+```
+aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.json
+```
+
+Run this to verify you can access container 
+
+```
+aws ecs execute-command  \
+--region $AWS_DEFAULT_REGION \
+--cluster cruddur \
+--task 848f58d4995740bbbe567113e437552d \
+--container backend-flask \
+--command "/bin/bash" \
+--interactive
+```
