@@ -300,3 +300,25 @@ aws ecs execute-command  \
 --command "/bin/bash" \
 --interactive
 ```
+
+### Login into ECR
+
+```
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
+```
+
+### Create frontend service
+
+```
+aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-js.json
+```
+remove the load balancer from the service-frontend-react-js.json Load Balacer 
+```
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:939741999521:targetgroup/cruddur-frontend-react-js/67f9fb27cefa7845",
+            "containerName": "frontend-react-js",
+            "containerPort": 3000
+        }
+      ],
+```
