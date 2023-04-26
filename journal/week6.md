@@ -10,7 +10,7 @@ Amazon Elastic Kubernetes Service (EKS) is a fully-managed Kubernetes service th
 
 AWS Fargate is a serverless compute engine for containers that allows developers to run containers without managing servers or clusters. With Fargate, developers can focus on building and deploying their applications without worrying about the underlying infrastructure.
 
-
+      
 ## IMPLEMENTATION
 
 * create a script to test RDS Connection named test
@@ -322,3 +322,12 @@ remove the load balancer from the service-frontend-react-js.json Load Balacer
         }
       ],
 ```
+### Docker Build docker build \
+--build-arg REACT_APP_BACKEND_URL="https://api.cloudsafari.live" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_hbta4pLNM" \
+--build-arg REACT_APP_CLIENT_ID="3sv2lv2b565t1j1lpt52q4h3j1" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.

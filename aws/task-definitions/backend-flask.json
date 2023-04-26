@@ -44,8 +44,8 @@
           {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
           {"name": "AWS_COGNITO_USER_POOL_ID", "value": "us-east-1_hbta4pLNM"},
           {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "3sv2lv2b565t1j1lpt52q4h3j1"},
-          {"name": "FRONTEND_URL", "value": "cloudsafari.live"},
-          {"name": "BACKEND_URL", "value": "api.cloudsafari.live"},
+          {"name": "FRONTEND_URL", "value": "https://cloudsafari.live"},
+          {"name": "BACKEND_URL", "value": "https://api.cloudsafari.live"},
           {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
         ],
         "secrets": [
