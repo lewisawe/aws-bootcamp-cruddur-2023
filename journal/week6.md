@@ -209,7 +209,7 @@ Execute CLI to put role
 ```
 aws iam put-role-policy --policy-name CruddurServiceExecutionPolicy --role-name CruddurServiceExecutionRole --policy-document file://aws/policies/service-execution-policy.json
 ```
-### Register Task Definitions Frontend
+### Register Task Definitions Backend
 
 ```
 aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
