@@ -322,6 +322,10 @@ remove the load balancer from the service-frontend-react-js.json Load Balacer
         }
       ],
 ```
+
+Build the image adding the Custom Domain
+
+```
 ### Docker Build docker build \
 --build-arg REACT_APP_BACKEND_URL="https://api.cloudsafari.live" \
 --build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
@@ -331,3 +335,13 @@ remove the load balancer from the service-frontend-react-js.json Load Balacer
 -t frontend-react-js \
 -f Dockerfile.prod \
 .
+```
+
+
+Docker push and tag
+
+```
+docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
+docker push $ECR_FRONTEND_REACT_URL:latest
+```
+
