@@ -215,6 +215,7 @@ Execute CLI to create role
 ```
 aws iam create-role --role-name CruddurServiceExecutionRole --assume-role-policy-document file://aws/policies/service-assume-role-execution-policy.json
 ```
+![Photo](assets/week6/cruddur-execution-role-policy.png)
 
 Execute CLI to put role
 
@@ -223,6 +224,8 @@ aws iam put-role-policy --policy-name CruddurServiceExecutionPolicy --role-name 
 ```
 
 ![Photo](assets/week6/cruddur-execution-role.png)
+
+![Photo](assets/week6/cruddur-task-role-policy.png)
 
 ### Register Task Definitions Backend
 
@@ -318,6 +321,15 @@ aws ecs execute-command  \
 --interactive
 ```
 
+Installing Session manager
+```
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+sudo dpkg -i session-manager-plugin.deb
+````
+![Photo](assets/week6/verifySessionManager.png)
+
+
+
 ### Login into ECR
 
 ```
@@ -339,6 +351,7 @@ remove the load balancer from the service-frontend-react-js.json Load Balacer
         }
       ],
 ```
+![Photo](assets/week6/frontendConfigs.png)
 
 Build the image adding the Custom Domain
 
@@ -361,13 +374,10 @@ Docker push and tag
 docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
 docker push $ECR_FRONTEND_REACT_URL:latest
 ```
+![Photo](assets/week6/cloudsafarilive.png)
 
 
-![Photo](assets/week6/cruddur-execution-role-policy.png)
 
-![Photo](assets/week6/cruddur-task-role-policy.png)
-
-![Photo](assets/week6/verifySessionManager.png)
 
 ![Photo](assets/week6/consoleHealthy.png)
 
@@ -379,11 +389,11 @@ docker push $ECR_FRONTEND_REACT_URL:latest
 
 ![Photo](assets/week6/albHealthcheck.png)
 
-![Photo](assets/week6/frontendConfigs.png)
+
 
 ![Photo](assets/week6/fronendALBHealthcheck.png)
 
-![Photo](assets/week6/cloudsafarilive.png)
+
 
 ![Photo](assets/week6/cloudSafariHealthcheck.png)
 
