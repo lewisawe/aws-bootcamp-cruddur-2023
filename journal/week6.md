@@ -79,6 +79,8 @@ aws logs put-retention-policy --log-group-name "cruddur" --retention-in-days 1
 
 ```
 
+![Photo](assets/week6/FargatecloudwatchGroup.png)
+
 ## Creating ECS Cluster
 AWS CLI command to create a ECS cluster named cruddur
 ```
@@ -87,6 +89,8 @@ aws ecs create-cluster \
 --service-connect-defaults namespace=cruddur
 
 ```
+
+![Photo](assets/week6/createCluster.png)
 
 ## Creating a repository
 
@@ -146,6 +150,9 @@ aws ecr create-repository \
   --repository-name backend-flask \
   --image-tag-mutability MUTABLE
 ```
+![Photo](assets/week6/createECRrepo.png)
+
+
 ### Set the URL
 
 ```
@@ -169,6 +176,10 @@ docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
 ```
 docker push $ECR_BACKEND_FLASK_URL:latest
 ```
+
+![Photo](assets/week6/ECRpush.png)
+
+
 Set up sensitive data to task definations
 
 ```
@@ -347,13 +358,11 @@ docker push $ECR_FRONTEND_REACT_URL:latest
 
 
 
-![Photo](assets/week6/createCluster.png)
 
-![Photo](assets/week6/FargatecloudwatchGroup.png)
 
-![Photo](assets/week6/createECRrepo.png)
 
-![Photo](assets/week6/ECRpush.png)
+
+
 
 ![Photo](assets/week6/cruddur-execution-role.png)
 
