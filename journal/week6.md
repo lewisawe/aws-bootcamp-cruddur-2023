@@ -190,6 +190,7 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLB
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
 ```
 
+![Photo](assets/week6/parameterstoreSecrets.png)
 
 ### Create a IAM Role
 
@@ -220,11 +221,16 @@ Execute CLI to put role
 ```
 aws iam put-role-policy --policy-name CruddurServiceExecutionPolicy --role-name CruddurServiceExecutionRole --policy-document file://aws/policies/service-execution-policy.json
 ```
+
+![Photo](assets/week6/cruddur-execution-role.png)
+
 ### Register Task Definitions Backend
 
 ```
 aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
 ```
+
+![Photo](assets/week6/taskDefinations.png)
 
 CLI to grab default VPC
 ```
@@ -356,19 +362,6 @@ docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
 docker push $ECR_FRONTEND_REACT_URL:latest
 ```
 
-
-
-
-
-
-
-
-
-![Photo](assets/week6/cruddur-execution-role.png)
-
-![Photo](assets/week6/paramaterstoreSecrets.png)
-
-![Photo](assets/week6/taskDefinations.png)
 
 ![Photo](assets/week6/cruddur-execution-role-policy.png)
 
