@@ -1,22 +1,3 @@
-# Week 8 — Serverless Image Processing
-
-Create a folder thumbing-serverless-cdk
-
-npm install aws-cdk -g
-```
-npm install aws-cdk -g
-
-```
-In the thumbing-serveless folder
-
-Initialize the CDk with this command
-```
-cdk init app --language typescript
-```
-
-edit thumbing-serveless-cdk-stacks.ts
-
-```
 import * as cdk from 'aws-cdk-lib';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
@@ -65,22 +46,3 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
   } 
 
 }
-```
-
-run
-
-```
-cdk synth
-```
-
-Bootstrap the account
-
-```
-cdk bootstrap "aws://939741999521/us-east-1"
-```
-
-import dotenv
-
-```
-npm i dotenv 
-```
