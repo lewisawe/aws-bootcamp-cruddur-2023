@@ -14,7 +14,7 @@ export default function ProfileHeading(props) {
     <div className="cruds_count">{props.profile.cruds_count} Cruds</div>
     <div class="banner" style={styles} >
       <div className="avatar">
-        <img src="https://assets.cloudsafari.live/avatars/samplePic.jpg"></img>
+        <img src="https://assets.cloudsafari.live/avatars/processed/samplePic.jpg"></img>
       </div>
     </div>
     <div class="info">
