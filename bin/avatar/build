@@ -1,12 +1,12 @@
 #! /usr/bin/bash
 
-# set the absolute path to the file
-abs_filepath="$ABS_PATH/thumbing-serverless-cdk"
+ABS_PATH=$(readlink -f "$0")
+SERVERLESS_PATH=$(dirname $ABS_PATH)
+BIN_PATH=$(dirname $SERVERLESS_PATH)
+PROJECT_PATH=$(dirname $BIN_PATH)
+SERVERLESS_PROJECT_PATH="$PROJECT_PATH/thumbing-serverless-cdk"
 
-# get the relative path to the file from the current directory
-FilePath=$(realpath --relative-base="$PWD" "$abs_filepath")
-
-cd $FilePath
+cd $SERVERLESS_PROJECT_PATH
 
 npm install
 rm -rf node_modules/sharp
