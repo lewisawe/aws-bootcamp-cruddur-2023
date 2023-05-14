@@ -45,6 +45,10 @@ tasks:
       cd aws/lambdas/process-images
       npm i sharp
       npm i @aws-sdk/client-s3
+  - name: docker
+    command: |
+      "$THEIA_WORKSPACE_ROOT/bin/ecr/login"
+      cd backend-flask
       
 vscode:
   extensions:
