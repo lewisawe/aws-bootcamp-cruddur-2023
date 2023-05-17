@@ -84,3 +84,13 @@ import dotenv
 ```
 npm i dotenv 
 ```
+
+![Photo](assets/week8/accountBootstrap.png)
+![Photo](assets/week8/successBootstrap.png)
+![Photo](assets/week8/CDKBucketStack.png)
+![Photo](assets/week8/snsTopics.png)
+![Photo](assets/week8/thumbingLambdas.png)
+![Photo](assets/week8/cloudwatchLogs.png)
+![Photo](assets/week8/cloudFront.png)
+![Photo](assets/week8/avatars&banner.png)
+![Photo](assets/week8/popupProfile.png)
