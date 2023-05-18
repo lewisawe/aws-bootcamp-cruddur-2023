@@ -14,7 +14,9 @@ from lib.db import db
 
 def get_last_successful_run():
   sql = """
-    d
+    SELECT last_successful_run
+    FROM public.schema_information
+    LIMIT 1
   """
   return int(db.query_value(sql,{},verbose=False))
 
