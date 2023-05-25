@@ -45,11 +45,13 @@ tasks:
       cd aws/lambdas/process-images
       npm i sharp
       npm i @aws-sdk/client-s3
-      
+
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
     - cweijan.vscode-postgresql-client2
+
+    - rangav.vscode-thunder-client
 
 ports:
   - name: frontend
