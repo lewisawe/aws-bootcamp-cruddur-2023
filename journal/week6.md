@@ -6,7 +6,7 @@ AWS Containers includes, Amazon Elastic Container Service (ECS), Amazon Elastic 
 
 Amazon Elastic Container Service (ECS) is a fully-managed container orchestration service that supports Docker containers. It enables developers to easily deploy and manage applications in a highly scalable and cost-effective way. ECS can be used to run containerized applications on a cluster of EC2 instances or on AWS Fargate, a serverless compute engine for containers.
 
-Amazon Elastic Kubernetes Service (EKS) is a fully-managed Kubernetes service that makes it easy to deploy, manage, and scale containerized applications using Kubernetes. EKS enables developers to focus on writing applications rather than managing the underlying infrastructure.
+Amazon Elastic Kubernetes Service (EKS) is a fully-managed Kubernetes service that makes it easy to deploy, manage, and scale containerized applications using Kubernetes. EKS enables developers to focus on writing applications rather than managing the underlying infrastructure. l
 
 AWS Fargate is a serverless compute engine for containers that allows developers to run containers without managing servers or clusters. With Fargate, developers can focus on building and deploying their applications without worrying about the underlying infrastructure.
 
