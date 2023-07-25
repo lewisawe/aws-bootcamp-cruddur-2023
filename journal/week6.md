@@ -204,7 +204,7 @@ Create a file in aws/policies/service-execution-role
         "ssm:GetParameters",
         "ssm:GetParameter"
       ],
-      "Resource": "arn:aws:ssm:us-east-1:939741999521:parameter/cruddur/backend-flask/*"
+      "Resource": "arn:aws:ssm:us-west-2:120651511769:parameter/cruddur/backend-flask/*"
     }]
   }
 ```
@@ -345,7 +345,7 @@ remove the load balancer from the service-frontend-react-js.json Load Balacer
 ```
     "loadBalancers": [
         {
-            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:939741999521:targetgroup/cruddur-frontend-react-js/67f9fb27cefa7845",
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:120651511769:targetgroup/cruddur-frontend-react-js/67f9fb27cefa7845",
             "containerName": "frontend-react-js",
             "containerPort": 3000
         }
@@ -360,7 +360,7 @@ Build the image adding the Custom Domain
 --build-arg REACT_APP_BACKEND_URL="https://api.cloudsafari.live" \
 --build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
 --build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
---build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_hbta4pLNM" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-west-2_hbta4pLNM" \
 --build-arg REACT_APP_CLIENT_ID="3sv2lv2b565t1j1lpt52q4h3j1" \
 -t frontend-react-js \
 -f Dockerfile.prod \

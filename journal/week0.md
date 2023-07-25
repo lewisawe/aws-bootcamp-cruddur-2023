@@ -35,7 +35,7 @@ The Approved email:
 ### 5. Working with gitpod
 ```
 aws budgets create-budget \
-    --account-id 939741999521 \
+    --account-id 120651511769 \
     --budget file://aws/json/budget.json \
     --notifications-with-subscribers file://aws/json/budget_notification.json
 ```

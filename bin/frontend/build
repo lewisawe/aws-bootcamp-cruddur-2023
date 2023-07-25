@@ -10,8 +10,8 @@ docker build \
 --build-arg REACT_APP_BACKEND_URL="https://api.cloudsafari.live" \
 --build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
 --build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
---build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_hbta4pLNM" \
---build-arg REACT_APP_CLIENT_ID="3sv2lv2b565t1j1lpt52q4h3j1" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-west-2_EaqXjXSlp" \
+--build-arg REACT_APP_CLIENT_ID="15q865dt0nsnp8gtj2hn6jcgs0" \
 -t frontend-react-js \
 -f "$FRONTEND_REACT_JS_PATH/Dockerfile.prod" \
 "$FRONTEND_REACT_JS_PATH/."

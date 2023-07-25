@@ -76,7 +76,7 @@ cdk synth
 Bootstrap the account
 
 ```
-cdk bootstrap "aws://939741999521/us-east-1"
+cdk bootstrap "aws://120651511769/us-west-2"
 ```
 
 import dotenv

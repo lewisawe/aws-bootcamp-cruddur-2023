@@ -613,8 +613,8 @@ def lambda_handler(event, context):
                 "dynamodb:Query"
             ],
             "Resource": [
-                "arn:aws:dynamodb:us-east-1:939741999521:table/cruddur-messages",
-                "arn:aws:dynamodb:us-east-1:939741999521:table/cruddur-messages/index/message-group-sk-index"
+                "arn:aws:dynamodb:us-west-2:120651511769:table/cruddur-messages",
+                "arn:aws:dynamodb:us-west-2:120651511769:table/cruddur-messages/index/message-group-sk-index"
             ]
         }
     ]
